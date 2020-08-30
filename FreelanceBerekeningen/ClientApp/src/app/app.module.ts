@@ -19,6 +19,7 @@ import { AppTopBarComponent } from './components/app-topbar/app.topbar.component
 import { HttpErrorInterceptor } from './http-interceptors/http-error.interceptor';
 import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { SimulatieModule } from './modules/simulatie/simulatie.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     imports: [
@@ -27,6 +28,7 @@ import { SimulatieModule } from './modules/simulatie/simulatie.module';
         AppRoutes,
         HttpClientModule,
         BrowserAnimationsModule,
+        RouterModule,
         DashboardModule,
         SimulatieModule,
         TabViewModule,

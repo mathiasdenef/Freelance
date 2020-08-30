@@ -1,24 +1,25 @@
 import { Component, OnInit } from '@angular/core';
+import { SimulatieService } from '../../services/simulatie.service';
 
 @Component({
-    templateUrl: './simulatie.component.html'
+    templateUrl: './simulatie.component.html',
+    styleUrls: ['./simulatie.component.css']
 })
 export class SimulatieComponent implements OnInit {
 
-    cols: any[];
     simulaties: any[];
+    columnsToDisplay = ['actions', 'name', 'creator', 'lastModified', 'creationDate', 'status'];
 
-    constructor() { }
+    constructor(private simulatieService: SimulatieService) { }
 
     ngOnInit() {
-        this.cols = [
-            { field: 'creator', header: 'Creator' },
-            { field: 'lastModified', header: 'Last Modified' },
-            { field: 'status', header: 'Status' },
-        ];
-
-        this.simulaties = [
-            {code: 'test', name: 'Eerste simulatie'}
-        ]
+        this.simulatieService.getAll().subscribe(
+            result => {
+                this.simulaties = result;
+            },
+            error => {
+                console.log(error);
+            }
+        )
     }
 }
